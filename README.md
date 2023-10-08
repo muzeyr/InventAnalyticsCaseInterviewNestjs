@@ -47,7 +47,7 @@ Follow the instructions below to set up and run the project locally:
 
 1. **Clone the repository:** 
    ```shell
-   git clone https://github.com/muzeyr/InventAnalyticsCaseInterview
+   git clone https://github.com/muzeyr/InventAnalyticsCaseInterviewNestjs
    ```
 
 2. **Install Dependencies:**
