@@ -34,7 +34,8 @@ export class AppService {
   async create(createBookDto: CreateBookDto) {
     const _book = await this.bookRepo.create();
     _book.name = createBookDto.name;
-    return await this.bookRepo.save(_book);
+    const _newBook =  await this.bookRepo.save(_book);
+    return _newBook.toPayload();
 
   }
 }

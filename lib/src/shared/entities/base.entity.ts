@@ -35,7 +35,6 @@ export class BaseEntity {
 
   @BeforeInsert()
   async beforeInsert() {
-    this.id = new ObjectId(ObjectId.generate()).toHexString();
     this.created_at = new Date();
     this.updated_at = new Date();
   }

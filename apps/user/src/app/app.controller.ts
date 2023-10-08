@@ -1,7 +1,7 @@
 import {Body, Controller, Get, Param, Post} from '@nestjs/common';
 
 import {AppService} from './app.service';
-import {CreateUserDto, ReturnDto} from "@invent-analytics/lib";
+import {CreateUserDto, DefaultReponse, ReturnDto} from "@invent-analytics/lib";
 import {ApiTags} from "@nestjs/swagger";
 
 @ApiTags('User Services')
@@ -11,26 +11,26 @@ export class AppController {
   }
 
   @Get()
-  getData() {
-    return this.appService.getUsers();
+  async getData() {
+    return DefaultReponse.toResponseArray( await this.appService.getUsers());
   }
 
   @Get('/:userId')
   getById(@Param('userId') userId: string,
   ) {
-    return this.appService.getById(userId);
+    return DefaultReponse.toResponse(this.appService.getById(userId));
   }
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
-    return await this.appService.create(createUserDto);
+    return DefaultReponse.toResponse(await this.appService.create(createUserDto));
   }
 
   @Post('/:userId/borrow/:bookId')
   async borrow(
     @Param('userId') userId: string,
     @Param('bookId') bookId: string) {
-    return await this.appService.borrow(userId, bookId);
+    return DefaultReponse.toResponse(await this.appService.borrow(userId, bookId));
   }
 
   @Post('/:userId/return/:bookId')
@@ -38,7 +38,9 @@ export class AppController {
     @Param('userId') userId: string,
     @Param('bookId') bookId: string,
     @Body() returnDto: ReturnDto) {
-    return await this.appService.return(userId, bookId, returnDto);
+
+      return DefaultReponse.toResponse(await this.appService.return(userId, bookId, returnDto));
+
   }
 
 }

@@ -1,7 +1,7 @@
 import {Body, Controller, Get, Param, Post} from '@nestjs/common';
 
 import {AppService} from './app.service';
-import {CreateBookDto} from "@invent-analytics/lib";
+import {CreateBookDto, DefaultReponse} from "@invent-analytics/lib";
 import {ApiTags} from "@nestjs/swagger";
 
 @Controller()
@@ -11,20 +11,20 @@ export class AppController {
   }
 
   @Get()
-  getData() {
-    return this.appService.getBooks();
+ async getData() {
+    return DefaultReponse.toResponseArray(await this.appService.getBooks());
   }
 
   @Get('/:bookId')
-  getById(@Param('bookId') bookId: string,
+  async getById(@Param('bookId') bookId: string,
   ) {
-    return this.appService.getById(bookId);
+    return DefaultReponse.toResponse(await this.appService.getById(bookId));
   }
 
   @Post()
   async create(@Body() createBookDto: CreateBookDto) {
 
-    return await this.appService.create(createBookDto);
+    return DefaultReponse.toResponse(await this.appService.create(createBookDto));
   }
 
 }

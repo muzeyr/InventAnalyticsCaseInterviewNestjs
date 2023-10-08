@@ -52,7 +52,8 @@ export class AppService {
   async create(createUserDto: CreateUserDto) {
     const _newUser = await this.userRepo.create();
     _newUser.name = createUserDto.name;
-    return await this.userRepo.save(_newUser);
+    const newUser = await this.userRepo.save(_newUser)
+    return newUser.toResponse();
   }
 
 
@@ -99,7 +100,8 @@ export class AppService {
     borrow.borrowedBy = user;
     borrow.book = book;
 
-    return await this.borrowRepo.save(borrow);
+     await this.borrowRepo.save(borrow);
+     return 'Borrowing process successful.';
   }
 
   async return(userId: string, bookId: string, returnDto: ReturnDto) {
@@ -119,8 +121,9 @@ export class AppService {
 
     borrow.returnDate = new Date();
     borrow.score = returnDto.score;
+     await this.borrowRepo.save(borrow);
 
-    return await this.borrowRepo.save(borrow);
+    return 'Return process successful';
   }
 
 }
