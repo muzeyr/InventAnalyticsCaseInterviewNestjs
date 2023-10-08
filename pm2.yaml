@@ -1,0 +1,7 @@
+apps:
+  - name: user
+    script: nx
+    args: serve user
+  - name: book
+    script: nx
+    args: serve book
