@@ -7,7 +7,9 @@ import {Repository} from "typeorm";
 export class AppService {
 
   constructor(@InjectRepository(Book)
-              private readonly bookRepo: Repository<Book>) {
+              private readonly bookRepo: Repository<Book>,
+              @InjectRepository(Borrow)
+              private readonly borrowRepo: Repository<Borrow>) {
 
   }
 
@@ -21,8 +23,20 @@ export class AppService {
         id: bookId,
       },
     });
+    const averageScoreQuery = await this.borrowRepo
+    .createQueryBuilder('borrow')
+    .select('AVG(borrow.score)', 'averageScore')
+    .where('borrow.bookId = :bookId', { bookId })
+    .andWhere('borrow.returnDate IS NOT NULL')
+    .getRawOne();
 
-    return result;
+  // Ortalama puanı book nesnesine ekleyin
+    const averageScore = parseFloat(averageScoreQuery.averageScore) || 0;
+
+    return {name:result.name,
+    id:result.id,
+    averageScore
+  }
 
   }
 
