@@ -7,7 +7,6 @@ Tabii ki, aşağıda verilen README.md dosyası içeriğini düzenlenmiş bir ş
 
 # Nx Microservice Project
 
-![Nx Logo](https://nx.dev/assets/images/nx-logo.png)
 
 This Nx monorepo project includes two different microservice projects that can be easily adapted for Kafka integration to build scalable microservices.
 
