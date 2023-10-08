@@ -5,7 +5,6 @@ Welcome to the Library Management API project! This Node.js-based REST API is de
 
 Tabii ki, aşağıda verilen README.md dosyası içeriğini düzenlenmiş bir şekilde bulabilirsiniz:
 
-```markdown
 # Nx Microservice Project
 
 ![Nx Logo](https://nx.dev/assets/images/nx-logo.png)
