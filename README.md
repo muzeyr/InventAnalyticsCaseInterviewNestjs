@@ -40,12 +40,7 @@ You can use the provided `pm2.yml` file to automatically start both microservice
 
 Feel free to explore and expand upon this Nx microservices project for your specific needs. It's designed to be adaptable and ready for Kafka integration, making it a great foundation for building scalable microservices.
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-Bu README.md dosyası, Nx yapısı ile geliştirilmiş iki farklı mikroservis projesini tanıtır ve bu projelerin nasıl çalıştırılacağını, Swagger dökümantasyonlarına nasıl erişileceğini ve projeyi nasıl kullanabileceğinizi anlatır. İhtiyaçlarınıza göre daha fazla bilgi ekleyebilir veya düzenleyebilirsiniz. Ayrıca, projenin lisans bilgilerini güncellemeyi unutmayın.
 ## 🚀 Getting Started
 
 Follow the instructions below to set up and run the project locally:
